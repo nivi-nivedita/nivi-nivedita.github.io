@@ -1,0 +1,38 @@
+
+#include <stdio.h>
+void main()
+{        
+	int i, j, k, n, a[30],count=0;
+        printf("Enter the value of N \n");
+	scanf("%d", &n);
+        printf("Enter the numbers \n");
+        for(i=1;i<=n;i++)
+           scanf("%d", &a[i]);
+       
+        for(i=1;i<=n;i++)
+        {
+            for (j =i+1;j<=n;j++)
+            {
+                if (a[i]>a[j]) 
+               {
+                   k=a[i];
+                   a[i]=a[j];
+                   a[j]=k;
+                }
+            }
+        }
+        for(i=1;i<=n;i++)
+        {
+        	if(a[i]==i)
+        	{
+        		count++;
+        	}
+        }
+        
+        if(count==n)
+        	printf("happy\n");
+        else
+        	printf("sad\n");
+
+ 
+}
