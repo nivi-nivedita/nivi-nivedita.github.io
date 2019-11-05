@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node *leftc;
+struct node *rightc;
+};
+void insertnode(struct node* root,int value,struct node *p)
+{
+if(root==NULL)
+{
+ struct node* tmp;
+ tmp=(struct node*)malloc(sizeof(struct node));
+ tmp->rightc=NULL;
+ tmp->leftc=NULL;
+ tmp->data=value;
+if(p!=NULL)
+{
+if(p->data>=value)
+p->leftc=tmp;
+if(value>p->data)
+p->rightc=tmp;}
+else
+{root=tmp;}
+return;
+}
+else if(value >root->data)
+{
+insertnode(root->rightc,value,root);  
+}
+else if(root->data >= value)
+{insertnode(root->leftc,value,root);
+}
+}
+ 
+int height(struct node *root)
+{
+   
+    if(root==NULL)
+    return 0;
+    int hls=height(root->leftc);
+    int hrs=height(root->rightc);
+    if(hls>hrs)
+    return hls+1;
+    else
+    return hrs+1;
+}
+void main()
+{
+int n,value,i,t;
+scanf("%d",&t);
+while(t--){
+scanf("%d",&n);
+struct node *root=NULL;
+root=(struct node*)malloc(sizeof(struct node));
+for(i=0;i<n;i++)
+{
+ 
+scanf("%d",&value);
+insertnode(root,value,NULL);
+}
+int a=height(root);
+printf("%d\n",a-1);
+}
+}
